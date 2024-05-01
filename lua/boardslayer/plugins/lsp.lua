@@ -33,7 +33,7 @@ return {
                 "dockerls",
                 "docker_compose_language_service",
                 "marksman",
-                "pylyzer",
+                "pyright",
                 "lemminx",
                 "yamlls",
                 "rust_analyzer",
