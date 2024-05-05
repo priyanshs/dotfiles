@@ -11,6 +11,10 @@ return {
   { "rose-pine/neovim", name = "rose-pine" },
   {'williamboman/mason.nvim'},
   {'williamboman/mason-lspconfig.nvim'},
+  {
+    '2kabhishek/termim.nvim',
+    cmd = { 'Fterm', 'FTerm', 'Sterm', 'STerm', 'Vterm', 'VTerm' },
+  },
 
   {'VonHeikemen/lsp-zero.nvim', branch = 'v3.x'},
   {'neovim/nvim-lspconfig'},
