@@ -27,15 +27,7 @@ return {
         require("mason-lspconfig").setup({
             ensure_installed = {
                 "lua_ls",
-                "bashls",
                 "clangd",
-                "diagnosticls",
-                "dockerls",
-                "docker_compose_language_service",
-                "marksman",
-                "pyright",
-                "lemminx",
-                "yamlls",
                 "rust_analyzer",
             },
             handlers = {
