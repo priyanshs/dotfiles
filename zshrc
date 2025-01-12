@@ -4,40 +4,9 @@ export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
-# -- Use fd instead of fzf --
-export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
-# Use fd (https://github.com/sharkdp/fd) for listing path candidates.
-# - The first argument to the function ($1) is the base path to start traversal
-# - See the source code (completion.{bash,zsh}) for the details.
-_fzf_compgen_path() {
-  fd --hidden --exclude .git . "$1"
-}
-# Use fd to generate the list for directory completion
-_fzf_compgen_dir() {
-  fd --type=d --hidden --exclude .git . "$1"
-}
-
-# some more ls aliases
-alias ll='ls -alF --color=auto'
-alias la='ls -A --color=auto'
-alias l='ls -CF --color=auto'
-
-# -- Use bat instead of cat --
-export BAT_THEME="ansi"
-eval "$(fzf --zsh)"
-alias cat='bat'
-# ---- Zoxide (better cd) ----
-eval "$(zoxide init zsh)"
-alias cd="z"
-
-# These are specifically two ZSH Plugins 
-source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-
 if [[ "$OSTYPE" == "darwin"* ]]; then
     # macOS specific configurations
-    neofetch
+    
     # Add your macOS specific settings here
     # export PATH="/usr/local/bin:$PATH"
 
@@ -115,10 +84,10 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     source /opt/homebrew/opt/chruby/share/chruby/chruby.sh
     source /opt/homebrew/opt/chruby/share/chruby/auto.sh
     chruby ruby-3.3.5 # run chruby to see actual version
-    
+    neofetch
 elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
     # Linux specific configurations
-    neofetch
+    
     export TERM=xterm
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
     # Add your Linux specific settings here
@@ -133,9 +102,42 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
     export OLLAMA_HOST=$(hostname -I | awk '{print $1}'):11435
     # Created by `pipx` on 2024-10-31 21:33:07
     export PATH="$PATH:/home/priyansh/.local/bin"
+    neofetch
 else
     echo "Unknown OS: $OSTYPE"
 fi
 
 # Common configurations for all OS
 export EDITOR='nvim'
+
+
+# -- Use fd instead of fzf --
+export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
+# Use fd (https://github.com/sharkdp/fd) for listing path candidates.
+# - The first argument to the function ($1) is the base path to start traversal
+# - See the source code (completion.{bash,zsh}) for the details.
+_fzf_compgen_path() {
+  fd --hidden --exclude .git . "$1"
+}
+# Use fd to generate the list for directory completion
+_fzf_compgen_dir() {
+  fd --type=d --hidden --exclude .git . "$1"
+}
+
+# some more ls aliases
+alias ll='ls -alF --color=auto'
+alias la='ls -A --color=auto'
+alias l='ls -CF --color=auto'
+
+# -- Use bat instead of cat --
+export BAT_THEME="ansi"
+eval "$(fzf --zsh)"
+alias cat='bat'
+# ---- Zoxide (better cd) ----
+eval "$(zoxide init zsh)"
+alias cd="z"
+
+# These are specifically two ZSH Plugins 
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
