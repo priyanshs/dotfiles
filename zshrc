@@ -130,7 +130,7 @@ _fzf_compgen_dir() {
 alias ll='ls -alF --color=auto'
 alias la='ls -A --color=auto'
 alias l='ls -CF --color=auto'
-
+alias ls='ls --color=auto'
 # -- Use bat instead of cat --
 export BAT_THEME="ansi"
 eval "$(fzf --zsh)"
@@ -141,3 +141,12 @@ alias cd="z"
 
 # These are specifically two ZSH Plugins 
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
