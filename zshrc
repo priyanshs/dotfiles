@@ -94,12 +94,13 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
     export PATH="/usr/bin:$PATH"
     autoload -U +X bashcompinit && bashcompinit
     complete -o nospace -C /usr/bin/hcp hcp
-
+# source /home/priyansh/miniconda3/bin/activate  # commented out by conda initialize
     export GOPATH=$HOME/go
     export GOROOT=/usr/local/go
     export PATH=$PATH:$GOPATH/bin:$GOROOT/bin
     export GO111MODULE=auto
     export OLLAMA_HOST=$(hostname -I | awk '{print $1}'):11435
+    export OLLAMA_ORIGINS=safari-web-extension://*
     # Created by `pipx` on 2024-10-31 21:33:07
     export PATH="$PATH:/home/priyansh/.local/bin"
     neofetch
@@ -130,7 +131,7 @@ _fzf_compgen_dir() {
 alias ll='ls -alF --color=auto'
 alias la='ls -A --color=auto'
 alias l='ls -CF --color=auto'
-
+alias ls='ls --color=auto'
 # -- Use bat instead of cat --
 export BAT_THEME="ansi"
 eval "$(fzf --zsh)"
@@ -141,3 +142,19 @@ alias cd="z"
 
 # These are specifically two ZSH Plugins 
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/priyansh/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/priyansh/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/priyansh/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/priyansh/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
