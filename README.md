@@ -17,7 +17,7 @@ sudo chsh -s /bin/zsh <username>
 ## 3. Install tools
 
 ```zsh
-brew install fzf zoxide bat yazi nvtop fd fq sevenzip neofetch zsh-autosuggestions nvim 
+brew install fzf zoxide bat yazi nvtop fd fq sevenzip neofetch zsh-autosuggestions nvim jesseduffield/lazydocker/lazydocker lazygit
 ```
 
 ## 4. Starship (<https://starship.rs/guide/#🚀-installation>)
