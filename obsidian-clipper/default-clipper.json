@@ -1,0 +1,42 @@
+{
+	"schemaVersion": "0.1.0",
+	"name": "Default",
+	"behavior": "create",
+	"noteContentFormat": "\n**Summary**:\n{{\"Return a summary with the key points discussed in this article\"}}\n\n{{content}}\n\n",
+	"properties": [
+		{
+			"name": "title",
+			"value": "{{title}}",
+			"type": "text"
+		},
+		{
+			"name": "source",
+			"value": "{{url}}",
+			"type": "text"
+		},
+		{
+			"name": "author",
+			"value": "{{author|split:\\\", \\\"|wikilink|join}}",
+			"type": "multitext"
+		},
+		{
+			"name": "published",
+			"value": "{{published}}",
+			"type": "date"
+		},
+		{
+			"name": "description",
+			"value": "{{description}}",
+			"type": "text"
+		},
+		{
+			"name": "tags",
+			"value": "clippings",
+			"type": "multitext"
+		}
+	],
+	"triggers": [],
+	"noteNameFormat": "{{title}}",
+	"path": "00-Inbox",
+	"context": "{{content|slice:0,100000}}"
+}
