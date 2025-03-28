@@ -14,7 +14,7 @@ HISTFILE=~/.zsh_history
 
 # Use modern completion system
 autoload -Uz compinit
-96compinit
+compinit
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
     # macOS specific configurations
